@@ -175,7 +175,9 @@ curl -u user:password http://localhost:8080/api/students
 ### 3. Создать студента
 
 ```bash
-curl -u admin:password -X POST http://localhost:8080/api/students   -H "Content-Type: application/json"   -d '{"name":"Sash","surname":"Brown"}'
+curl -u admin:password -X POST http://localhost:8080/api/students ^
+  -H "Content-Type: application/json" ^
+  -d "{\"name\":\"Sash\",\"surname\":\"Brown\"}"
 ```
 
 ### 4. Проверить запрет удаления для обычного пользователя
@@ -189,7 +191,9 @@ curl -i -u user:password -X DELETE http://localhost:8080/api/students/1
 ### 5. Проверить validation
 
 ```bash
-curl -i -u admin:password -X POST http://localhost:8080/api/students   -H "Content-Type: application/json"   -d '{"name":"","surname":"A"}'
+curl -i -u admin:password -X POST http://localhost:8080/api/students ^
+  -H "Content-Type: application/json" ^
+  -d "{\"name\":\"Sash\",\"surname\":\"Brown\"}"
 ```
 
 Ожидаемый результат: `HTTP 400` и JSON с `fieldErrors`.
